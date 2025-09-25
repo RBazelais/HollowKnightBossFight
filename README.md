@@ -34,7 +34,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-![Video Walkthrough](https://submissions.us-east-1.linodeobjects.com/web103/TRlYqDSV.gif)
+![Video Walkthrough](images/TRlYqDSV.gif)
 
 GIF created with LICEcap
 
