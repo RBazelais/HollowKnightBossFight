@@ -279,6 +279,22 @@ const router = new Router(routes);
 // Handle browser back/forward buttons
 window.addEventListener('popstate', () => router.render());
 
+// Smooth scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Focus the main heading for screen readers
+    setTimeout(() => {
+        const mainHeading = document.querySelector('h1');
+        if (mainHeading) {
+            mainHeading.focus();
+        }
+    }, 500);
+}
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', async () => {
     window.router = router;

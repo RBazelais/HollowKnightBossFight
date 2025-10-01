@@ -13,7 +13,7 @@
             <div class="cover-image"></div>
             <div class="cover-overlay"></div>
             <div class="cover-content">
-                <h1>Hollow Knight</h1>
+                <h1 tabindex="-1">Hollow Knight</h1>
                 <p>For those who are tired of being repeatedly defeated by the bosses</p>
                 <a href="#bosses" class="button">All Bosses</a>
             </div>
@@ -26,6 +26,18 @@
                     <input type="text" id="boss-search" placeholder="Search bosses by name, location, or difficulty..." aria-label="Search bosses">
                 </div>
                 <div id="app"></div>
+                <div class="return-to-top-container">
+                    <button 
+                        id="return-to-top" 
+                        class="return-to-top-btn" 
+                        onclick="scrollToTop()" 
+                        aria-label="Return to top of page"
+                        title="Return to top"
+                    >
+                        <span aria-hidden="true">↑</span>
+                        <span class="sr-only">Return to top</span>
+                    </button>
+                </div>
             </section>
             <footer>
                 <p class="footer-text">

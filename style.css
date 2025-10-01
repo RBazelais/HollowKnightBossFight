@@ -16,6 +16,20 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Accessibility improvements */
+*:focus {
+    scroll-margin-top: 2rem;
+}
+
+/* Ensure high contrast for screen readers */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* Cover section */
 .cover-section {
     position: relative;
@@ -81,6 +95,18 @@ body {
     box-shadow: 0 6px 20px rgba(229, 75, 44, 0.4);
 }
 
+.cover-content .button:focus {
+    outline: none;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(229, 75, 44, 0.4);
+}
+
+.cover-content .button:focus-visible {
+    outline: 3px solid var(--accent-glow);
+    outline-offset: 2px;
+}
+
 /* Boss grid styles */
 .boss-grid {
     display: grid;
@@ -108,6 +134,18 @@ body {
     border-color: var(--primary);
 }
 
+.boss-card:focus {
+    outline: none;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary);
+}
+
+.boss-card:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
 .boss-card img {
     width: 100%;
     height: 200px;
@@ -117,6 +155,10 @@ body {
 }
 
 .boss-card:hover img {
+    filter: brightness(1) contrast(1.2);
+}
+
+.boss-card:focus img {
     filter: brightness(1) contrast(1.2);
 }
 
@@ -173,6 +215,18 @@ body {
     box-shadow: 0 0 15px rgba(229, 75, 44, 0.4);
 }
 
+.boss-card .read-more:focus {
+    outline: none;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 15px rgba(229, 75, 44, 0.4);
+}
+
+.boss-card .read-more:focus-visible {
+    outline: 3px solid var(--accent-glow);
+    outline-offset: 2px;
+}
+
 /* Search functionality styles */
 .search-container {
     margin: 1.5rem 0;
@@ -199,6 +253,11 @@ body {
     background: rgba(26, 26, 34, 0.8);
 }
 
+#boss-search:focus-visible {
+    outline: 3px solid var(--accent-glow);
+    outline-offset: 2px;
+}
+
 #boss-search::placeholder {
     color: var(--text-muted);
     opacity: 0.8;
@@ -210,6 +269,64 @@ body {
     font-style: italic;
     margin: 2rem 0;
     font-size: 1.1rem;
+}
+
+/* Return to Top Button */
+.return-to-top-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 3rem 0 2rem 0;
+}
+
+.return-to-top-btn {
+    background: var(--card-bg);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.return-to-top-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(229, 75, 44, 0.4);
+}
+
+.return-to-top-btn:focus {
+    outline: none;
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(229, 75, 44, 0.4);
+}
+
+.return-to-top-btn:focus-visible {
+    outline: 3px solid var(--accent-glow);
+    outline-offset: 3px;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Boss detail page styles */
@@ -328,6 +445,18 @@ body {
     background: var(--primary);
     color: white;
     box-shadow: 0 0 15px rgba(229, 75, 44, 0.4);
+}
+
+.back-button:focus {
+    outline: none;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 15px rgba(229, 75, 44, 0.4);
+}
+
+.back-button:focus-visible {
+    outline: 3px solid var(--accent-glow);
+    outline-offset: 2px;
 }
 
 .not-found {
@@ -472,6 +601,17 @@ section p.subtitle {
 
 .breadcrumb a:hover {
     color: var(--primary);
+}
+
+.breadcrumb a:focus {
+    outline: none;
+    color: var(--primary);
+}
+
+.breadcrumb a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* Footer styling */
