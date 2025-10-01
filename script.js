@@ -169,12 +169,14 @@ class TemplateBuilder {
 // Handle data operations
 class DataService {
     static async getAllBosses() {
-        return Promise.resolve(bosses);
+        const response = await fetch('/api/bosses');
+        if (!response.ok) throw new Error('Failed to fetch bosses');
+        return response.json();
     }
-    
+
     static async getBossById(id) {
-        const allBosses = await this.getAllBosses();
-        return allBosses.find(b => b.id === id);
+        const bosses = await this.getAllBosses();
+        return bosses.find(b => b.id === id);
     }
 }
 

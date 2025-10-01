@@ -1,12 +1,19 @@
-import { pool } from '../config/database.js'
-import dotenv from '../.env'
+import dotenv from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+dotenv.config({ path: join(__dirname, '../../.env') })
+
+import { pool } from './database.js'
 import bosses from './data.js'
 
 const createTableQuery = `
     DROP TABLE IF EXISTS bosses;
 
     CREATE TABLE IF NOT EXISTS bosses (
-        id SERIAL PRIMARY KEY,
+        id VARCHAR(255) PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         image VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
@@ -37,22 +44,29 @@ const seedBossesTable = async () => {
     for (const boss of bosses) {
         const insertQuery = {
             text: `INSERT INTO bosses 
-                (name, image, description, location, health, difficulty, rewards, lore, strategy, submittedBy, submittedOn)`,
+                (id, name, image, description, location, health, difficulty, rewards, lore, strategy, submittedBy, submittedOn)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
             values: [
+                boss.id,
                 boss.name,
                 boss.image,
                 boss.description,
                 boss.location,
                 boss.health,
                 boss.difficulty,
-                boss.rewards, // should be an array
+                boss.rewards, // array of strings
                 boss.lore,
                 boss.strategy,
                 boss.submittedBy,
                 boss.submittedOn
             ]
         }
-        await pool.query(insertQuery)
+        try {
+            await pool.query(insertQuery)
+            console.log(`✅ ${boss.name} added successfully`)
+        } catch (err) {
+            console.error('⚠️ error inserting boss', err)
+        }
     }
     console.log('🌱 bosses table seeded successfully')
 }

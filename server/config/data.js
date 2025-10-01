@@ -10,7 +10,9 @@ const bosses = [
         difficulty: 'Easy',
         rewards: ['Geo', 'City Crest'],
         lore: 'A failed vessel who took up the armor and mace of a fallen Great Knight of Hallownest.',
-        strategy: 'Stay close to avoid his shockwave attack. Attack when he pauses after his mace slams.'
+        strategy: 'Stay close to avoid his shockwave attack. Attack when he pauses after his mace slams.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'hornet',
@@ -22,7 +24,9 @@ const bosses = [
         difficulty: 'Medium',
         rewards: ['Mothwing Cloak'],
         lore: 'Daughter of Herrah the Beast, one of the Dreamers, and protector of Hallownest.',
-        strategy: 'Watch for her tells before she lunges. Use the environment to avoid her aerial attacks.'
+        strategy: 'Watch for her tells before she lunges. Use the environment to avoid her aerial attacks.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'mantislords',
@@ -34,7 +38,9 @@ const bosses = [
         difficulty: 'Hard',
         rewards: ['Respect of the Mantis Tribe', 'Access to Deepnest'],
         lore: 'Leaders of the Mantis Tribe who have long protected their territory from outsiders.',
-        strategy: 'Focus on one at a time. Learn their attack patterns and dodge rather than tank hits.'
+        strategy: 'Focus on one at a time. Learn their attack patterns and dodge rather than tank hits.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'crystalguardian',
@@ -46,7 +52,9 @@ const bosses = [
         difficulty: 'Medium',
         rewards: ['Crystal Heart'],
         lore: 'Once a miner in the Crystal Peak, now transformed by the peak\'s strange energies.',
-        strategy: 'Stay mobile to avoid his laser attacks. Use platforms to gain elevation advantage.'
+        strategy: 'Stay mobile to avoid his laser attacks. Use platforms to gain elevation advantage.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'dungdefender',
@@ -58,7 +66,9 @@ const bosses = [
         difficulty: 'Medium',
         rewards: ['Elegant Key'],
         lore: 'One of the Five Great Knights of Hallownest, now protecting the waterways with enthusiasm.',
-        strategy: 'Stay on the move to avoid his diving attacks. Attack when he emerges from the ground.'
+        strategy: 'Stay on the move to avoid his diving attacks. Attack when he emerges from the ground.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'brokenvessel',
@@ -70,7 +80,9 @@ const bosses = [
         difficulty: 'Hard',
         rewards: ['Mothwing Cloak Upgrade'],
         lore: 'A failed Vessel like the Knight, but completely overtaken by the Infection.',
-        strategy: 'Stay mobile and avoid the infection blobs. Use spells to deal damage from a distance.'
+        strategy: 'Stay mobile and avoid the infection blobs. Use spells to deal damage from a distance.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     },
     {
         id: 'soulmaster',
@@ -82,6 +94,9 @@ const bosses = [
         difficulty: 'Hard',
         rewards: ['Desolate Dive'],
         lore: 'Leader of the Soul Sanctum who sought to transcend mortality through soul mastery.',
-        strategy: 'Watch for his teleportation tells. Use Desolate Dive to damage him during his ground slam.'
+        strategy: 'Watch for his teleportation tells. Use Desolate Dive to damage him during his ground slam.',
+        submittedBy: 'Rachel Bazelais',
+        submittedOn: new Date().toISOString()
     }
 ];
+export default bosses;

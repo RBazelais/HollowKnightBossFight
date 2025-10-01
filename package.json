@@ -2,6 +2,11 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "reset": "cd server/config && node --require dotenv/config reset.js",
+    "start": "npm run reset && nodemon --require dotenv/config server/server.js"
   }
 }
