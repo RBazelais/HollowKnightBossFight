@@ -53,7 +53,6 @@ class AnimationHelper {
     }
 }
 
-// Handle DOM manipulation
 class DOMHelper {
     static getElement(selector) {
         return document.getElementById(selector) || document.querySelector(selector);
@@ -180,15 +179,57 @@ class DataService {
     }
 }
 
+class SearchHandler {
+    static filterBosses(bosses, searchTerm) {
+        if (!searchTerm.trim()) {
+            return bosses;
+        }
+        
+        const term = searchTerm.toLowerCase().trim();
+        return bosses.filter(boss => 
+            boss.name.toLowerCase().includes(term) ||
+            boss.location.toLowerCase().includes(term) ||
+            boss.description.toLowerCase().includes(term) ||
+            boss.difficulty.toLowerCase().includes(term)
+        );
+    }
+
+    static setupSearchListener(bosses) {
+        const searchInput = document.getElementById('boss-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const filteredBosses = this.filterBosses(bosses, e.target.value);
+                
+                // Show no results using 404 page if needed
+                if (filteredBosses.length === 0 && e.target.value.trim()) {
+                    DOMHelper.setContent('app', TemplateBuilder.build404Page());
+                } else {
+                    DOMHelper.setContent('app', TemplateBuilder.buildBossGrid(filteredBosses));
+                }
+            });
+        }
+    }
+}
+
 // Handle page rendering
 async function renderHome() {
     DOMHelper.showElement('bosses');
     DOMHelper.showElement('#bosses h2');
     DOMHelper.showElement('#bosses .subtitle');
+    DOMHelper.showElement('.search-container');
     
     try {
         const bossData = await DataService.getAllBosses();
         DOMHelper.setContent('app', TemplateBuilder.buildBossGrid(bossData));
+        
+        // Setup search functionality
+        SearchHandler.setupSearchListener(bossData);
+        
+        // Clear search input when returning to home
+        const searchInput = document.getElementById('boss-search');
+        if (searchInput) {
+            searchInput.value = '';
+        }
     } catch (error) {
         console.error('Error loading bosses:', error);
         DOMHelper.setContent('app', '<p>Error loading boss data</p>');
@@ -207,6 +248,7 @@ async function renderBossDetail(params) {
         
         DOMHelper.hideElement('#bosses h2');
         DOMHelper.hideElement('#bosses .subtitle');
+        DOMHelper.hideElement('.search-container');
         
         DOMHelper.setContent('app', TemplateBuilder.buildBossDetail(boss));
     } catch (error) {
@@ -219,6 +261,7 @@ async function renderBossDetail(params) {
 function render404() {
     DOMHelper.hideElement('#bosses h2');
     DOMHelper.hideElement('#bosses .subtitle');
+    DOMHelper.hideElement('.search-container');
     DOMHelper.setContent('app', TemplateBuilder.build404Page());
 }
 

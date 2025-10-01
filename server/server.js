@@ -18,7 +18,7 @@ app.use('/api/bosses', bossesRouter);
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname, '../')));
 
-// Simple test route
+// test route
 app.get('/test', (req, res) => {
   res.json({ message: 'Server is running!' });
 });
